@@ -6,6 +6,9 @@ dados sobre instituicoes religiosas registradas no brasil
 - `cbr.db` banco contendo os dados geográficos extraidos do IBGE;
 - `mod.csv` dados gerado com dados intermediários das instituições;
 - `per_latlon.csv` dados gerados pela associação de mod.csv com os dados do IBGE;
-- `religiao.db` base de dados com todos os cnaes 94.91-0-00 do brasil
+- `religiao.db` base de dados com todos os cnaes **94.91-0-00** do Brasil
 
-
+## Uso
+- depois de instalar o jupyter notebook;
+- `pip install -r requirements.txt`;
+- renderizar o notebook
