@@ -1,0 +1,58 @@
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base, engine
+
+class IgrejasModel(Base):
+    __tablename__ = 'igrejas'
+    cnpj = Column('cnpj', String, primary_key=True)
+    matrizFilial = Column('identificador_matriz_filial', Integer)
+    razaoSocial = Column('razao_social', String)
+    nomeFantasia = Column('nome_fantasia', String)
+    situacaoCadastral = Column('situacao_cadastral', Integer)
+    dataSituacao_cadastral = Column('data_situacao_cadastral', String)
+    motivoSituacao_cadastral = Column('motivo_situacao_cadastral', Integer)
+    nomeCidadeExterior = Column('nome_cidade_exterior', String)
+    codigoPais = Column('codigo_pais', Integer)
+    nomePais = Column('nome_pais', String)
+    codigoNaturezaJuridica = Column('codigo_natureza_juridica', Integer)
+    dataInicioAtividade = Column('data_inicio_atividade', String)
+    cnaeFiscal = Column('cnae_fiscal', Integer)
+    descricaoTipo_logradouro = Column('descricao_tipo_logradouro', String)
+    logradouro = Column('logradouro', String)
+    numero = Column('numero', String)
+    complemento = Column('complemento', String)
+    bairro = Column('bairro', String)
+    cep = Column('cep', Integer)
+    uf = Column('uf', String)
+    codigoMunicipio = Column('codigo_municipio', Integer)
+    municipio = Column('municipio', String)
+    dddTelefone_1 = Column('ddd_telefone_1', String)
+    dddTelefone_2 = Column('ddd_telefone_2', String)
+    dddFax = Column('ddd_fax', String)
+    correioEletronico = Column('correio_eletronico', String)
+    qualificacaoResponsavel = Column('qualificacao_do_responsavel', Integer)
+    capitalSocial = Column('capital_social', Float)
+    porte = Column('porte', Integer)
+    opcaoPeloSimples = Column('opcao_pelo_simples', Integer)
+    dataOpcaoPeloSimples = Column('data_opcao_pelo_simples', String)
+    dataExclusaoDoSimples = Column('data_exclusao_do_simples', String)
+    opcaoPeloMei = Column('opcao_pelo_mei', Integer)
+    situacaoEspecial = Column('situacao_especial', String)
+    dataSituacaoEspecial = Column('data_situacao_especial', String)
+    Socios = relationship('SociosModel')
+
+class SociosModel(Base):
+    __tablename__ = 'socio'
+    cnpj = Column(ForeignKey("igrejas.cnpj"))
+    nomeSocio = Column('nome_socio', String)
+    cpfSocio = Column('cnpj_cpf_do_socio', String, primary_key=True)
+    codQualifiqSocio = Column('codigo_qualificacao_socio', Integer)
+    pCapitalSocial = Column('percentual_capital_social', Integer)
+    dataEntradaSociedade = Column('data_entrada_sociedade', String)
+    codigoPais = Column('codigo_pais', Integer)
+    pais = Column('nome_pais', String)
+    cpfRepLegall = Column('cpf_representante_legal', String)
+    nomeRepLegal = Column('nome_representante_legal', String)
+    codQualiRepLegal = Column('codigo_qualificacao_representante_legal', Integer)
+
+Base.prepare(engine)

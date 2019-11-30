@@ -12,3 +12,7 @@ dados sobre instituicoes religiosas registradas no brasil
 - depois de instalar o jupyter notebook;
 - `pip install -r requirements.txt`;
 - renderizar o notebook
+
+## API graphql
+- executar `python api/api.py`
+- acessar `http://localhost:5000/graphql` e aplicar as queries
